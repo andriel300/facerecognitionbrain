@@ -12,11 +12,12 @@ class App extends Component {
     super();
     this.state = {
       input: "",
+      IMAGE_URL: "",
     };
   }
 
   onInputChange = (event) => {
-    console.log(event.target.value);
+    this.setState({ input: event.target.value });
   };
 
   onButtonSubmit = () => {
@@ -29,8 +30,6 @@ class App extends Component {
     // This is optional.You can specify a model version or the empty string for the default
     const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
 
-    const IMAGE_URL = this.state.input;
-
     const raw = JSON.stringify({
       user_app_id: {
         user_id: USER_ID,
@@ -40,7 +39,7 @@ class App extends Component {
         {
           data: {
             image: {
-              url: IMAGE_URL,
+              url: this.state.input,
             },
           },
         },
@@ -84,7 +83,7 @@ class App extends Component {
           onButtonSubmit={this.onButtonSubmit}
         />
         <Particles />
-        <FaceRecognition />
+        <FaceRecognition IMAGE_URL={this.state.IMAGE_URL} />
       </div>
     );
   }
