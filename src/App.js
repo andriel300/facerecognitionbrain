@@ -12,7 +12,6 @@ class App extends Component {
     super();
     this.state = {
       input: "",
-      IMAGE_URL: "",
     };
   }
 
@@ -83,7 +82,7 @@ class App extends Component {
           onButtonSubmit={this.onButtonSubmit}
         />
         <Particles />
-        <FaceRecognition IMAGE_URL={this.state.IMAGE_URL} />
+        <FaceRecognition imageUrl={this.state.input} />
       </div>
     );
   }
