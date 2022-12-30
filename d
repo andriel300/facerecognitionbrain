@@ -1,0 +1,10 @@
+[33m056c4f5[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: commit: add tsparticles
+[33m38cdf20[m HEAD@{1}: commit: add css styles, add form, add rank style
+[33m56b0537[m HEAD@{2}: commit: add imageLinkForm, add brain png logo
+[33mb33232a[m HEAD@{3}: commit: add reset modern css
+[33m4f95d58[m HEAD@{4}: commit: add logo, add background color
+[33m89bb760[m HEAD@{5}: Branch: renamed refs/heads/main to refs/heads/main
+[33m89bb760[m HEAD@{7}: Branch: renamed refs/heads/main to refs/heads/main
+[33m89bb760[m HEAD@{9}: Branch: renamed refs/heads/main to refs/heads/main
+[33m89bb760[m HEAD@{11}: commit: update packag & update libralies
+[33m56056fa[m HEAD@{12}: commit (initial): Initialize project using Create React App
