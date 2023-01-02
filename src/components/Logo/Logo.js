@@ -7,12 +7,20 @@ const Logo = () => {
   return (
     <div className="ma4 mt0">
       <Tilt
-        className="Tilt br2 shadow-2"
+        className="parallax-effect Tilt br3 shadow-3"
+        perspective={500}
+        glareEnable={true}
+        glareMaxOpacity={0.15}
+        scale={1.02}
         options={{ max: 55 }}
         style={{ height: 150, width: 150 }}
       >
-        <div className="Tilt-inner pa3">
-          <img style={{ paddingTop: "5px" }} alt="logo" src={brain} />
+        <div className="inner-element pa3">
+          <img
+            style={{ paddingTop: "13px", paddingLeft: "7px" }}
+            alt="logo"
+            src={brain}
+          />
         </div>
       </Tilt>
     </div>
