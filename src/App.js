@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import Particles from "./components/Particles/Particles";
 import Navigation from "./components/Navigation/Navigation";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Logo from "./components/Logo/Logo";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
-import Particles from "./components/Particles/Particles";
 import "./App.css";
 
 class App extends Component {
@@ -103,7 +103,7 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        <Particles />
+        <Particles id="tsparticles" />
         <FaceRecognition box={this.state.box} imageUrl={this.state.input} />
       </div>
     );

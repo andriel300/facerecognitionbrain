@@ -14,7 +14,7 @@ const ParticlesComponent = (props) => {
       autoPlay: true,
       background: {
         color: {
-          value: "#0d47a1",
+          value: "",
         },
         image: "",
         position: "50% 50%",
@@ -36,7 +36,7 @@ const ParticlesComponent = (props) => {
       delay: 0,
       fullScreen: {
         enable: true,
-        zIndex: 1,
+        zIndex: -1,
       },
       detectRetina: true,
       duration: 0,
@@ -209,7 +209,7 @@ const ParticlesComponent = (props) => {
           },
         },
         color: {
-          value: "#ffffff",
+          value: "#CD00FF",
           animation: {
             h: {
               count: 0,
