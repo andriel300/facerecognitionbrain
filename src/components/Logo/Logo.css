@@ -1,9 +1,5 @@
 .Tilt {
-  background-image: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0) 50%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+  background-image: linear-gradient(90deg, #be4bdb 5%, #9775fa 95%);
 }
 
 .parallax-efect {
