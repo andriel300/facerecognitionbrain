@@ -18,6 +18,7 @@ This project is built using framework ReactJS and Clarifai's API. frontend as Ja
 
 ## Built With
 
+- React with a simple CRA
 - JavaScript
 - CSS
 - HTML
