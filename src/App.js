@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Particles from './components/Particles/Particles';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Navigation from './components/Navigation/Navigation';
@@ -28,7 +29,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
-    this.calculateFaceLocation = this.calculateFaceLocation.bind(this);
   }
 
   loadUser = (data) => {
@@ -44,12 +44,20 @@ class App extends Component {
     });
   };
 
+  onInputChange = (event) => {
+    this.setState({ input: event.target.value });
+  };
+
+  displayFaceBox = (box) => {
+    this.setState({ box });
+  };
+
   calculateFaceLocation = (data) => {
-    const {
-      region_info: { bounding_box: clarifaiFace },
-    } = JSON.parse(data, null, 2).outputs[0].data.regions[0];
-    const image = document.getElementById('inputImage');
-    const { width, height } = image;
+    const clarifaiFace =
+      data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputimage');
+    const width = Number(image.width);
+    const height = Number(image.height);
     return {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
@@ -58,70 +66,24 @@ class App extends Component {
     };
   };
 
-  displayFaceBox = (box) => {
-    this.setState({ box });
-  };
-
-  onInputChange = (event) => {
-    this.setState({ input: event.target.value });
-  };
-
-  onPictureSubmit = () => {
-    const USER_ID = 'andriel300';
-    const PAT = '9452072f14e143e18351e4681454cb29';
-    const APP_ID = 'my-first-application';
-    const MODEL_ID = 'face-detection';
-    const MODEL_VERSION_ID = '6dc7e46bc9124c5c8824be4822abe105';
-
-    const { input } = this.state;
-
-    const raw = JSON.stringify({
-      user_app_id: {
-        user_id: USER_ID,
-        app_id: APP_ID,
-      },
-      inputs: [
-        {
-          data: {
-            image: {
-              url: input,
-            },
-          },
-        },
-      ],
-    });
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Key ${PAT}`,
-      },
-      body: raw,
-    };
-
-    fetch(
-      `https://api.clarifai.com/v2/models/${MODEL_ID}/versions/${MODEL_VERSION_ID}/outputs`,
-      requestOptions,
-    )
-      .then((response) => response.text())
-      .then((responseText) => {
-        if (responseText) {
-          fetch('http://localhost:3000/image', {
-            method: 'put',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
-            .then((response) => response.json())
-            .then((count) => {
-              this.setState(Object.assign(this.state.user, { entries: count }));
-            });
-        }
-        this.displayFaceBox(this.calculateFaceLocation(responseText));
-      })
-      .catch((error) => console.log('error', error));
+  onPictureSubmit = async () => {
+    this.setState({ imageUrl: this.state.input });
+    try {
+      const response = await axios.post('http://localhost:3000/predict', {
+        input: this.state.input,
+      });
+      if (response) {
+        const countResponse = await axios.put('http://localhost:3000/image', {
+          id: this.state.user.id,
+        });
+        this.setState(
+          Object.assign(this.state.user, { entries: countResponse.data }),
+        );
+      }
+      this.displayFaceBox(this.calculateFaceLocation(response.data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   onRouteChange = (route) => {
@@ -134,7 +96,7 @@ class App extends Component {
   };
 
   render() {
-    const { isSignedIn, route, box, input } = this.state;
+    const { isSignedIn, route, box, imageUrl } = this.state;
     const { name, entries } = this.state.user;
     return (
       <div className="App">
@@ -154,7 +116,7 @@ class App extends Component {
               onPictureSubmit={this.onPictureSubmit}
             />
 
-            <FaceRecognition box={box} imageUrl={input} />
+            <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : route === 'signin' ? (
           <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
