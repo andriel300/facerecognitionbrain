@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signInEmail: '',
-      signInPassword: '',
+      signInEmail: "",
+      signInPassword: "",
     };
   }
 
@@ -20,7 +20,7 @@ class SignIn extends Component {
 
   onSubmitSignIn = () => {
     axios
-      .post('https://smartbrain-service.onrender.com/signin', {
+      .post("https://smartbrain-service.onrender.com/signin", {
         email: this.state.signInEmail,
         password: this.state.signInPassword,
       })
@@ -28,7 +28,7 @@ class SignIn extends Component {
         const user = response.data;
         if (user.id) {
           this.props.loadUser(user);
-          this.props.onRouteChange('home');
+          this.props.onRouteChange("home");
         }
       });
   };
@@ -77,7 +77,7 @@ class SignIn extends Component {
             <div className="lh-copy mt3">
               <p
                 className="f6 link dim black db pointer"
-                onClick={() => onRouteChange('register')}
+                onClick={() => onRouteChange("register")}
               >
                 Register
               </p>

@@ -1,7 +1,7 @@
-import Particles from 'react-tsparticles';
+import Particles from "react-tsparticles";
 // import { loadSlim } from "tsparticles-slim"; // loads tsparticles-slim
-import { loadFull } from 'tsparticles'; // loads tsparticles
-import { useCallback, useMemo } from 'react';
+import { loadFull } from "tsparticles"; // loads tsparticles
+import { useCallback, useMemo } from "react";
 
 // tsParticles Repository: https://github.com/matteobruni/tsparticles
 // tsParticles Website: https://particles.js.org/
@@ -15,19 +15,19 @@ function ParticlesComponent(props) {
         autoPlay: true,
         background: {
           color: {
-            value: '',
+            value: "",
           },
-          image: '',
-          position: '50% 50%',
-          repeat: 'no-repeat',
-          size: 'cover',
+          image: "",
+          position: "50% 50%",
+          repeat: "no-repeat",
+          size: "cover",
           opacity: 1,
         },
         backgroundMask: {
-          composite: 'destination-out',
+          composite: "destination-out",
           cover: {
             color: {
-              value: '#fff',
+              value: "#fff",
             },
             opacity: 1,
           },
@@ -43,21 +43,21 @@ function ParticlesComponent(props) {
         duration: 0,
         fpsLimit: 120,
         interactivity: {
-          detectsOn: 'window',
+          detectsOn: "window",
           events: {
             onClick: {
               enable: false,
-              mode: 'push',
+              mode: "push",
             },
             onDiv: {
-              selectors: '#repulse-div',
+              selectors: "#repulse-div",
               enable: true,
-              mode: 'repulse',
-              type: 'circle',
+              mode: "repulse",
+              type: "circle",
             },
             onHover: {
               enable: false,
-              mode: 'repulse',
+              mode: "repulse",
               parallax: {
                 enable: false,
                 force: 2,
@@ -73,7 +73,7 @@ function ParticlesComponent(props) {
             attract: {
               distance: 200,
               duration: 0.4,
-              easing: 'ease-out-quad',
+              easing: "ease-out-quad",
               factor: 1,
               maxSpeed: 50,
               speed: 1,
@@ -123,14 +123,14 @@ function ParticlesComponent(props) {
               factor: 100,
               speed: 1,
               maxSpeed: 50,
-              easing: 'ease-out-quad',
+              easing: "ease-out-quad",
               divs: {
                 distance: 200,
                 duration: 0.4,
                 factor: 100,
                 speed: 1,
                 maxSpeed: 50,
-                easing: 'ease-out-quad',
+                easing: "ease-out-quad",
                 selectors: [],
               },
             },
@@ -147,17 +147,17 @@ function ParticlesComponent(props) {
               area: {
                 gradient: {
                   start: {
-                    value: '#ffffff',
+                    value: "#ffffff",
                   },
                   stop: {
-                    value: '#000000',
+                    value: "#000000",
                   },
                 },
                 radius: 1000,
               },
               shadow: {
                 color: {
-                  value: '#000000',
+                  value: "#000000",
                 },
                 length: 2000,
               },
@@ -203,14 +203,14 @@ function ParticlesComponent(props) {
               },
             },
             enable: false,
-            mode: 'bounce',
+            mode: "bounce",
             overlap: {
               enable: true,
               retries: 0,
             },
           },
           color: {
-            value: '#CD00FF',
+            value: "#CD00FF",
             animation: {
               h: {
                 count: 0,
@@ -255,12 +255,12 @@ function ParticlesComponent(props) {
             center: {
               x: 50,
               y: 50,
-              mode: 'percent',
+              mode: "percent",
               radius: 0,
             },
             decay: 0,
             distance: {},
-            direction: 'none',
+            direction: "none",
             drift: 0,
             enable: true,
             gravity: {
@@ -282,11 +282,11 @@ function ParticlesComponent(props) {
               options: {},
             },
             outModes: {
-              default: 'out',
-              bottom: 'out',
-              left: 'out',
-              right: 'out',
-              top: 'out',
+              default: "out",
+              bottom: "out",
+              left: "out",
+              right: "out",
+              top: "out",
             },
             random: false,
             size: false,
@@ -300,7 +300,7 @@ function ParticlesComponent(props) {
               enable: false,
               length: 10,
               fillColor: {
-                value: '#000000',
+                value: "#000000",
               },
             },
             vibrate: false,
@@ -330,8 +330,8 @@ function ParticlesComponent(props) {
               speed: 3,
               decay: 0,
               sync: false,
-              destroy: 'none',
-              startValue: 'random',
+              destroy: "none",
+              startValue: "random",
               minimumValue: 0.1,
             },
           },
@@ -339,7 +339,7 @@ function ParticlesComponent(props) {
           shadow: {
             blur: 0,
             color: {
-              value: '#000',
+              value: "#000",
             },
             enable: false,
             offset: {
@@ -349,7 +349,7 @@ function ParticlesComponent(props) {
           },
           shape: {
             options: {},
-            type: 'circle',
+            type: "circle",
           },
           size: {
             random: {
@@ -366,8 +366,8 @@ function ParticlesComponent(props) {
               speed: 20,
               decay: 0,
               sync: false,
-              destroy: 'none',
-              startValue: 'random',
+              destroy: "none",
+              startValue: "random",
               minimumValue: 0.1,
             },
           },
@@ -415,12 +415,12 @@ function ParticlesComponent(props) {
               decay: 0,
               sync: false,
             },
-            direction: 'clockwise',
+            direction: "clockwise",
             path: false,
           },
           destroy: {
             bounds: {},
-            mode: 'none',
+            mode: "none",
             split: {
               count: 1,
               factor: {
@@ -454,7 +454,7 @@ function ParticlesComponent(props) {
               enable: false,
               value: 0,
             },
-            mode: 'vertical',
+            mode: "vertical",
             speed: 25,
           },
           tilt: {
@@ -469,7 +469,7 @@ function ParticlesComponent(props) {
               decay: 0,
               sync: false,
             },
-            direction: 'clockwise',
+            direction: "clockwise",
             enable: false,
           },
           twinkle: {
@@ -514,7 +514,7 @@ function ParticlesComponent(props) {
           links: {
             blink: false,
             color: {
-              value: '#ffffff',
+              value: "#ffffff",
             },
             consent: false,
             distance: 150,
@@ -524,7 +524,7 @@ function ParticlesComponent(props) {
             shadow: {
               blur: 5,
               color: {
-                value: '#000',
+                value: "#000",
               },
               enable: false,
             },
@@ -556,7 +556,7 @@ function ParticlesComponent(props) {
         themes: [],
         zLayers: 100,
       }),
-    [],
+    []
   );
 
   // useCallback is not mandatory, but it's recommended since this callback can be memoized if static

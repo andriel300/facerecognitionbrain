@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
-      name: '',
+      email: "",
+      password: "",
+      name: "",
     };
   }
 
@@ -25,7 +25,7 @@ class Register extends Component {
 
   onSubmitSignIn = () => {
     axios
-      .post('https://smartbrain-service.onrender.com/register', {
+      .post("https://smartbrain-service.onrender.com/register", {
         email: this.state.email,
         password: this.state.password,
         name: this.state.name,
@@ -34,7 +34,7 @@ class Register extends Component {
         const user = response.data;
         if (user.id) {
           this.props.loadUser(user);
-          this.props.onRouteChange('home');
+          this.props.onRouteChange("home");
         }
       });
   };

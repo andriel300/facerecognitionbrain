@@ -1,7 +1,7 @@
-import React from 'react';
-import Tilt from 'react-parallax-tilt';
-import brain from './brain.png';
-import './Logo.css';
+import React from "react";
+import Tilt from "react-parallax-tilt";
+import brain from "./brain.png";
+import "./Logo.css";
 
 function Logo() {
   return (
@@ -17,7 +17,7 @@ function Logo() {
       >
         <div className="inner-element pa3">
           <img
-            style={{ paddingTop: '13px', paddingLeft: '7px' }}
+            style={{ paddingTop: "13px", paddingLeft: "7px" }}
             alt="logo"
             src={brain}
           />
