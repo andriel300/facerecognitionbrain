@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SignIn extends Component {
   constructor(props) {
@@ -18,16 +19,13 @@ class SignIn extends Component {
   };
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+    axios
+      .post('https://smartbrain-service.onrender.com/signin', {
         email: this.state.signInEmail,
         password: this.state.signInPassword,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => {
+      })
+      .then((response) => {
+        const user = response.data;
         if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange('home');

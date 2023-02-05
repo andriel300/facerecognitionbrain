@@ -69,13 +69,19 @@ class App extends Component {
   onPictureSubmit = async () => {
     this.setState({ imageUrl: this.state.input });
     try {
-      const response = await axios.post('http://localhost:3000/predict', {
-        input: this.state.input,
-      });
+      const response = await axios.post(
+        'https://smartbrain-service.onrender.com/predict',
+        {
+          input: this.state.input,
+        },
+      );
       if (response) {
-        const countResponse = await axios.put('http://localhost:3000/image', {
-          id: this.state.user.id,
-        });
+        const countResponse = await axios.put(
+          'https://smartbrain-service.onrender.com/image',
+          {
+            id: this.state.user.id,
+          },
+        );
         this.setState(
           Object.assign(this.state.user, { entries: countResponse.data }),
         );
