@@ -53,8 +53,7 @@ class App extends Component {
   };
 
   calculateFaceLocation = (data) => {
-    const clarifaiFace =
-      data.outputs[0].data.regions[0].region_info.bounding_box;
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimage');
     const width = Number(image.width);
     const height = Number(image.height);
@@ -69,22 +68,14 @@ class App extends Component {
   onPictureSubmit = async () => {
     this.setState({ imageUrl: this.state.input });
     try {
-      const response = await axios.post(
-        'https://smartbrain-service.onrender.com/predict',
-        {
-          input: this.state.input,
-        },
-      );
+      const response = await axios.post('https://smartbrain-service.onrender.com/predict', {
+        input: this.state.input,
+      });
       if (response) {
-        const countResponse = await axios.put(
-          'https://smartbrain-service.onrender.com/image',
-          {
-            id: this.state.user.id,
-          },
-        );
-        this.setState(
-          Object.assign(this.state.user, { entries: countResponse.data }),
-        );
+        const countResponse = await axios.put('https://smartbrain-service.onrender.com/image', {
+          id: this.state.user.id,
+        });
+        this.setState(Object.assign(this.state.user, { entries: countResponse.data }));
       }
       this.displayFaceBox(this.calculateFaceLocation(response.data));
     } catch (error) {
@@ -107,30 +98,21 @@ class App extends Component {
     return (
       <div className="App">
         <Particles id="tsparticles" />
-        <Navigation
-          isSignedIn={isSignedIn}
-          onRouteChange={this.onRouteChange}
-        />
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
 
         {route === 'home' ? (
           <div>
             <Logo />
             <Rank name={name} entries={entries} />
 
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onPictureSubmit={this.onPictureSubmit}
-            />
+            <ImageLinkForm onInputChange={this.onInputChange} onPictureSubmit={this.onPictureSubmit} />
 
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : route === 'signin' ? (
           <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
         ) : (
-          <Register
-            onRouteChange={this.onRouteChange}
-            loadUser={this.loadUser}
-          />
+          <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
         )}
       </div>
     );
